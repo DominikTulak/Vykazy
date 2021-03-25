@@ -7,13 +7,15 @@
         mc:Ignorable="d"
         Title="Nastavení" Height="367.733" Width="461.983">
     <Grid>
-        <Label Content="Nastavení výkazů" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Width="192"/>
-        <Label Content="Jméno&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Text1:&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="27"/>
-        <Label Content="Text2:&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="27"/>
-        <TextBox x:Name="" HorizontalAlignment="Left" Height="23" Margin="60,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
-        <TextBox HorizontalAlignment="Left" Height="65" Margin="60,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" Text="Dětský donmov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="60,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="267" Text="Výkaz práce - služby:"/>
-
+        <Label Content="Nastavení výkazů" HorizontalAlignment="Center" Margin="0,20,0,0" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Width="192"/>
+        <Label Content="Jméno:" HorizontalAlignment="Left" Margin="74,88,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Text1:" HorizontalAlignment="Left" Margin="74,120,0,0" VerticalAlignment="Top" Height="26"/>
+        <Label Content="Text2:" HorizontalAlignment="Left" Margin="74,190,0,0" VerticalAlignment="Top" Height="27"/>
+        <TextBox x:Name="TB_Jmeno" HorizontalAlignment="Left" Height="23" Margin="124,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+        <TextBox x:Name="TB_Text1" HorizontalAlignment="Left" Height="64" Margin="124,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="Dětský donmov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace"/>
+        <TextBox x:Name="TB_Text2" HorizontalAlignment="Left" Height="23" Margin="124,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="Výkaz práce - služby:"/>
+        <Button x:Name="btn_Ulozit" Content="Uložit" HorizontalAlignment="Left" Margin="92,257,0,0" VerticalAlignment="Top" Width="75" Click="btn_Ulozit_Click"/>
+        <Button x:Name="btn_Nahrat" Content="Nahrát" HorizontalAlignment="Left" Margin="195,257,0,0" VerticalAlignment="Top" Width="75" Click="btn_Nahrat_Click"/>
+        <Button x:Name="btn_Vymazat" Content="Vymazat" HorizontalAlignment="Left" Margin="299,257,0,0" VerticalAlignment="Top" Width="75" Click="btn_Vymazat_Click"/>
     </Grid>
 </Window>

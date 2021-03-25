@@ -83,7 +83,7 @@ namespace Vykazy.Model
             worksheet.Cells[7, "C"] = "PPP" + (char)10 + "(od-do)";
             worksheet.Cells[7, "D"] = "PPP" + (char)10 + "(hodiny)";
             worksheet.Cells[7, "E"] = "NPČ" + (char)10 + "(hodiny)";
-            worksheet.Cells[7, "F"] = "PPP+NPČ" + (char)10 + "celkem";
+            worksheet.Cells[7, "F"] = "PPP+NPČ" + (char)10 + "(celkem)";
             
             //Zarovnani policek
             VertikalniZarovnani(worksheet, "B7", "B7", "center");
@@ -109,9 +109,11 @@ namespace Vykazy.Model
             int PocetDni = DateTime.DaysInMonth(Rok, Mesic);
             for (int i = 9; i < 9 + PocetDni; i++)
             {
+                ((Excel.Range)worksheet.Cells[i, "B"]).NumberFormat = "@";
                 worksheet.Cells[i, "B"] = (i - 8).ToString() + ".";
                 HorizontalniZarovnani(worksheet, "B" + i.ToString(), "B" + i.ToString(), "center");
                 ((Excel.Range)worksheet.Cells[i, "C"]).NumberFormat = "@";
+                ((Excel.Range)worksheet.Cells[i, "D"]).NumberFormat = "#";
                 ((Excel.Range)worksheet.Cells[i, "E"]).NumberFormat = "#";
                 ((Excel.Range)worksheet.Cells[i, "F"]).FormulaLocal = String.Format("=SUMA(D{0}:E{0})", i);
                 Ohraniceni(worksheet, "B" + i.ToString(), "F" + i.ToString(), 2);
@@ -119,14 +121,21 @@ namespace Vykazy.Model
             }
 
             worksheet.Cells[9 + PocetDni, "B"] = "Celkem";
-            ((Excel.Range)worksheet.Cells[9 + PocetDni, "D"]).FormulaLocal = String.Format("=SUMA(D9:D{0})", PocetDni + 9);
-            ((Excel.Range)worksheet.Cells[9 + PocetDni, "F"]).FormulaLocal = String.Format("=SUMA(F9:F{0})", PocetDni + 9);
             worksheet.get_Range("B" + (PocetDni + 9).ToString(), "C" + (PocetDni + 9).ToString()).Merge();
             Ohraniceni(worksheet, "B" + (PocetDni + 9).ToString(), "F" + (PocetDni + 9).ToString(), 2);
+            ((Excel.Range)worksheet.Cells[9 + PocetDni, "D"]).FormulaLocal = String.Format("=SUMA(D9:D{0})", PocetDni + 8);
+            ((Excel.Range)worksheet.Cells[9 + PocetDni, "E"]).FormulaLocal = String.Format("=SUMA(E9:E{0})", PocetDni + 8);
+            ((Excel.Range)worksheet.Cells[9 + PocetDni, "F"]).FormulaLocal = String.Format("=SUMA(F9:F{0})", PocetDni + 8);
+            HorizontalniZarovnani(worksheet, "B" + (9 + PocetDni).ToString(), "F" + (9 + PocetDni).ToString(), "center");
             Ohraniceni(worksheet, "B7", "F8", 3);
 
+            worksheet.Cells[12 + PocetDni, "B"] = "Dne:  .........................     .........................     .........................     .........................";
+            worksheet.Cells[13 + PocetDni, "B"] = "                                           Vychovatel/ka             Schváleno                Kontrola";
+            worksheet.get_Range("B" + (12 + PocetDni).ToString(), "F" + (12 + PocetDni).ToString()).Merge();
+            worksheet.get_Range("B" + (13 + PocetDni).ToString(), "F" + (13 + PocetDni).ToString()).Merge();
+
             //Vyhledat a označit víkendy
-            for(int i = 1; i < PocetDni; i++)
+            for (int i = 1; i < PocetDni; i++)
             {
                 if(Convertors.Vikend(i, Mesic, Rok))
                 {

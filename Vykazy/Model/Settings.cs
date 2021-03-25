@@ -13,12 +13,12 @@ namespace Vykazy.Model
         public static string Jmeno;
         public static string Text1;
         public static string Text2;
-
         public static void Nacist()
         {
             try
             {
-                StreamReader sr = new StreamReader("Vykazy.conf");
+                if (!Directory.Exists(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%") + "\\Vykazy")) { throw new Exception(); }
+                StreamReader sr = new StreamReader(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%") + "\\Vykazy\\Vykazy.conf");
                 List<string> config = new List<string>();
                 while (!sr.EndOfStream)
                 {
@@ -48,18 +48,22 @@ namespace Vykazy.Model
             catch
             {
                 MessageBox.Show("Konfigurační soubor nenalezen, vytvářím nový...");
-                StreamWriter sw = new StreamWriter("Vykazy.conf");
+                if (!Directory.Exists(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%") + "\\Vykazy"))
+                {
+                    Directory.CreateDirectory(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%") + "\\Vykazy");
+                }
+                StreamWriter sw = new StreamWriter(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%") + "\\Vykazy\\Vykazy.conf");
                 sw.WriteLine("");
-                sw.WriteLine("Dětský donmov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace");
+                sw.WriteLine("Dětský domov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace");
                 sw.WriteLine("Výkaz práce - služby:");
 
                 sw.Close();
                 Nacist();
             }
         }
-        public static void Ulozit()
+        public static void Ulozit(string Jmeno, string Text1, string Text2)
         {
-            StreamWriter sw = new StreamWriter("Vykazy.conf");
+            StreamWriter sw = new StreamWriter(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%") + "\\Vykazy\\Vykazy.conf");
             sw.WriteLine(Jmeno);
             sw.WriteLine(Text1);
             sw.WriteLine(Text2);

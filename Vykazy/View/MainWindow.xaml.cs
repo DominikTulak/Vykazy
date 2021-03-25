@@ -36,7 +36,8 @@ namespace Vykazy
         }
         private void btn_Nastaveni_Click(object sender, RoutedEventArgs e)
         {
-            
+            View.Nastavení n = new View.Nastavení();
+            n.Show();
         }
     }
 }

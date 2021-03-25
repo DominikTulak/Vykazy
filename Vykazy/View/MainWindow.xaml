@@ -15,7 +15,7 @@
         <Button x:Name="btn_Nastaveni" Content="Nastavení" HorizontalAlignment="Center" Margin="100,144,0,0" VerticalAlignment="Center" Width="74" Click="btn_Nastaveni_Click"/>
         <Label Content="Měsíc:" HorizontalAlignment="Center" Margin="0,20,150,0" VerticalAlignment="Center" RenderTransformOrigin="-0.342,0.154"/>
         <Label Content="Rok:" HorizontalAlignment="Center" Margin="0,82,160,0" VerticalAlignment="Center" RenderTransformOrigin="-0.342,0.154"/>
-        <Label Content="Verze 1.0, Dominik Tulak 2018-2021" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom"/>
+        <Label Content="Verze 1.0, Dominik Tulak 2021" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom"/>
         
     </Grid>
 </Window>

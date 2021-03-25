@@ -1,7 +1,6 @@
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.csprojAssemblyReference.cache
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.csproj.ResolveComReference.cache
-C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\MainWindow.g.cs
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\App.g.cs
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy_MarkupCompile.cache
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy_MarkupCompile.lref
@@ -12,7 +11,6 @@ C:\Users\Admin\source\repos\Vykazy\Vykazy\bin\Debug\net5.0-windows\Vykazy.runtim
 C:\Users\Admin\source\repos\Vykazy\Vykazy\bin\Debug\net5.0-windows\Vykazy.dll
 C:\Users\Admin\source\repos\Vykazy\Vykazy\bin\Debug\net5.0-windows\ref\Vykazy.dll
 C:\Users\Admin\source\repos\Vykazy\Vykazy\bin\Debug\net5.0-windows\Vykazy.pdb
-C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\MainWindow.baml
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.g.resources
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.AssemblyInfoInputs.cache
@@ -23,3 +21,7 @@ C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\ref\Vykazy.dl
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.pdb
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Vykazy.genruntimeconfig.cache
 C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\Interop.Microsoft.Office.Core.dll
+C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\View\MainWindow.g.cs
+C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\View\Nastavení.g.cs
+C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\View\MainWindow.baml
+C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\View\Nastavení.baml
