@@ -59,12 +59,13 @@ namespace Vykazy.Model
 
 
             //Nastaveni sirky sloupcu
-            ((Excel.Range)worksheet.Columns[1]).ColumnWidth = 4;
+            ((Excel.Range)worksheet.Columns[1]).ColumnWidth = 8;
             ((Excel.Range)worksheet.Columns[2]).ColumnWidth = 7;
             ((Excel.Range)worksheet.Columns[3]).ColumnWidth = 22.5;
             ((Excel.Range)worksheet.Columns[4]).ColumnWidth = 8;
             ((Excel.Range)worksheet.Columns[5]).ColumnWidth = 20;
             ((Excel.Range)worksheet.Columns[6]).ColumnWidth = 8.5;
+            ((Excel.Range)worksheet.Columns[7]).ColumnWidth = 8;
 
             worksheet.Cells[1, "B"] = Text1;
             worksheet.Cells[3, "B"] = Text2;
@@ -99,8 +100,10 @@ namespace Vykazy.Model
             HorizontalniZarovnani(worksheet, "F7", "F7", "center");
             HorizontalniZarovnani(worksheet, "B1", "F1", "center");
 
-            worksheet.Cells[4, "E"] = Convertors.MesicSlovne(Mesic) + " " + Rok;
-            worksheet.Cells[5, "E"] = Jmeno;
+            worksheet.Cells[4, "F"] = Convertors.MesicSlovne(Mesic) + " " + Rok;
+            worksheet.Cells[5, "F"] = Jmeno;
+            HorizontalniZarovnani(worksheet, "F4", "F5", "right");
+
 
             //Ohraničení
             Ohraniceni(worksheet, "B7", "F8", 2);
