@@ -25,12 +25,16 @@ namespace Vykazy
         {
             InitializeComponent();
             Controller = new Controller.MainWindowController();
+            Model.Convertors.VygenerovatMenu(cb_mesic, cb_rok);
         }
 
-        private void BTNGenerate_Click(object sender, RoutedEventArgs e)
-        {        
+        private void btn_OK_Click(object sender, RoutedEventArgs e)
+        {
             Controller.BTNGenerateClick();
         }
-        
+        private void btn_Nastaveni_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

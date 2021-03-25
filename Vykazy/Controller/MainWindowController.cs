@@ -9,12 +9,12 @@ namespace Vykazy.Controller
 {
     class MainWindowController
     {
-        public void BTNGenerateClick()
+        public void BTNGenerateClick(int mesic, int rok)
         {
             var excelApp = new Excel.Application();
             excelApp.Visible = true;
             var eapp = excelApp.Workbooks.Add();
-            Model.ExcelGenerator.VytvorTabulku(3, 2021, "Jana Došková", excelApp);
+            Model.ExcelGenerator.VytvorTabulku(mesic, rok, "Jana Došková", excelApp);
 
         }
     }

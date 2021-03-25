@@ -5,9 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vykazy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="352.4" Width="525">
     <Grid>
-        <Button x:Name="BTNGenerate" Content="Button" HorizontalAlignment="Left" Margin="372,275,0,0" VerticalAlignment="Top" Click="BTNGenerate_Click"/>
-
+        <Label Content="Výkazy - DD" HorizontalAlignment="Center" VerticalAlignment="Top" Width="271" Height="97" FontSize="48"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="155" Margin="0,70,0,0" Stroke="Black" VerticalAlignment="Center" Width="290"/>
+        <ComboBox x:Name="cb_mesic" HorizontalAlignment="Center" Margin="50,20,0,0" VerticalAlignment="Center" Width="120"/>
+        <ComboBox x:Name="cb_rok" HorizontalAlignment="Center" Margin="50,80,0,0" VerticalAlignment="Center" Width="120"/>
+        <Button x:Name="btn_OK" Content="Vytvořit" HorizontalAlignment="Center" Margin="0,144,100,0" VerticalAlignment="Center" Width="75" Click="btn_OK_Click"/>
+        <Button x:Name="btn_Nastaveni" Content="Nastavení" HorizontalAlignment="Center" Margin="100,144,0,0" VerticalAlignment="Center" Width="74" Click="btn_Nastaveni_Click"/>
+        <Label Content="Měsíc:" HorizontalAlignment="Center" Margin="0,20,150,0" VerticalAlignment="Center" RenderTransformOrigin="-0.342,0.154"/>
+        <Label Content="Rok:" HorizontalAlignment="Center" Margin="0,82,160,0" VerticalAlignment="Center" RenderTransformOrigin="-0.342,0.154"/>
+        <Label Content="Verze 1.0, Dominik Tulak 2018-2021" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom"/>
+        
     </Grid>
 </Window>

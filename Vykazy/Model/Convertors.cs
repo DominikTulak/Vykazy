@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Vykazy.Model
 {
@@ -60,6 +61,36 @@ namespace Vykazy.Model
         public static bool Vikend(int Den, int Mesic, int Rok)
         {
             return (DateTime.Parse(String.Format("{0}-{1:D2}-{2:D2} 00:00", Rok, Mesic, Den)).DayOfWeek.ToString() == "Saturday" || DateTime.Parse(String.Format("{0}-{1:D2}-{2:D2} 00:00", Rok, Mesic, Den)).DayOfWeek.ToString() == "Sunday");
+        }
+
+        public static void VygenerovatMenu(ComboBox cb_mesic, ComboBox cb_rok)
+        {
+            int aktualniRok = DateTime.Today.Year;
+            int aktualniMesic = DateTime.Today.Date.Month;
+            //MessageBox.Show(aktualniMesic.ToString());
+            cb_mesic.Items.Add("Leden");
+            cb_mesic.Items.Add("Únor");
+            cb_mesic.Items.Add("Březen");
+            cb_mesic.Items.Add("Duben");
+            cb_mesic.Items.Add("Květen");
+            cb_mesic.Items.Add("Červen");
+            cb_mesic.Items.Add("Červenec");
+            cb_mesic.Items.Add("Srpen");
+            cb_mesic.Items.Add("Září");
+            cb_mesic.Items.Add("Říjen");
+            cb_mesic.Items.Add("Listopad");
+            cb_mesic.Items.Add("Prosinec");
+            cb_mesic.SelectedItem = cb_mesic.Items.GetItemAt((aktualniMesic) % 12);
+
+            cb_rok.Items.Add(aktualniRok - 3);
+            cb_rok.Items.Add(aktualniRok - 2);
+            cb_rok.Items.Add(aktualniRok - 1);
+            cb_rok.Items.Add(aktualniRok);
+            cb_rok.Items.Add(aktualniRok + 1);
+            cb_rok.Items.Add(aktualniRok + 2);
+            cb_rok.Items.Add(aktualniRok + 3);
+            cb_rok.Items.Add(aktualniRok + 4);
+            cb_rok.SelectedItem = aktualniRok;
         }
     }
 }
