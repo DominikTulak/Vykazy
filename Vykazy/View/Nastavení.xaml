@@ -12,10 +12,11 @@
         <Label Content="Text1:" HorizontalAlignment="Left" Margin="74,120,0,0" VerticalAlignment="Top" Height="26"/>
         <Label Content="Text2:" HorizontalAlignment="Left" Margin="74,190,0,0" VerticalAlignment="Top" Height="27"/>
         <TextBox x:Name="TB_Jmeno" HorizontalAlignment="Left" Height="23" Margin="124,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
-        <TextBox x:Name="TB_Text1" HorizontalAlignment="Left" Height="64" Margin="124,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="Dětský donmov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace"/>
-        <TextBox x:Name="TB_Text2" HorizontalAlignment="Left" Height="23" Margin="124,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266" Text="Výkaz práce - služby:"/>
+        <TextBox x:Name="TB_Text1" HorizontalAlignment="Left" Height="64" Margin="124,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
+        <TextBox x:Name="TB_Text2" HorizontalAlignment="Left" Height="23" Margin="124,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="266"/>
         <Button x:Name="btn_Ulozit" Content="Uložit" HorizontalAlignment="Left" Margin="92,257,0,0" VerticalAlignment="Top" Width="75" Click="btn_Ulozit_Click"/>
         <Button x:Name="btn_Nahrat" Content="Nahrát" HorizontalAlignment="Left" Margin="195,257,0,0" VerticalAlignment="Top" Width="75" Click="btn_Nahrat_Click"/>
         <Button x:Name="btn_Vymazat" Content="Vymazat" HorizontalAlignment="Left" Margin="299,257,0,0" VerticalAlignment="Top" Width="75" Click="btn_Vymazat_Click"/>
+        <Button x:Name="btn_Nastaveni" Content="" HorizontalAlignment="Left" Margin="6,310,0,0" VerticalAlignment="Top" Width="16" Click="btn_Nastaveni_Click" Height="16" Opacity="0" />
     </Grid>
 </Window>

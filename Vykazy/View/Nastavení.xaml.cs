@@ -19,12 +19,15 @@ namespace Vykazy.View
     /// </summary>
     public partial class Nastavení : Window
     {
+        private int pocitadlo = 0;
         public Nastavení()
         {
             InitializeComponent();
             TB_Jmeno.Text = Model.Settings.Jmeno;
             TB_Text1.Text = Model.Settings.Text1;
             TB_Text2.Text = Model.Settings.Text2;
+            TB_Text1.IsReadOnly = true;
+            TB_Text2.IsReadOnly = true;
         }
 
         private void btn_Ulozit_Click(object sender, RoutedEventArgs e)
@@ -45,6 +48,15 @@ namespace Vykazy.View
             TB_Jmeno.Text = "";
             TB_Text1.Text = "";
             TB_Text2.Text = "";
+        }
+        private void btn_Nastaveni_Click(object sender, RoutedEventArgs e)
+        {
+            pocitadlo++;
+            if(pocitadlo == 10)
+            {
+                TB_Text1.IsReadOnly = false;
+                TB_Text2.IsReadOnly = false;
+            }
         }
     }
 }

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vykazy"
         mc:Ignorable="d"
-        Title="MainWindow" Height="352.4" Width="525">
+        Title="Výkazy - DD" Height="352.4" Width="525">
     <Grid>
         <Label Content="Výkazy - DD" HorizontalAlignment="Center" VerticalAlignment="Top" Width="271" Height="97" FontSize="48"/>
         <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="155" Margin="0,70,0,0" Stroke="Black" VerticalAlignment="Center" Width="290"/>
