@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\netcoreapp3.1\
+C:\Users\Admin\source\repos\Vykazy\Vykazy\obj\Debug\net5.0-windows\
 Vykazy
 none
 false
-TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1;
+TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 C:\Users\Admin\source\repos\Vykazy\Vykazy\App.xaml
 11407045341
 
-51169733525
-1941463451640
+5-467596435
+195-339056546
 MainWindow.xaml;
 
 False
