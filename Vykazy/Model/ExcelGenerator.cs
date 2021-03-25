@@ -10,38 +10,7 @@ namespace Vykazy.Model
 {
     public static class ExcelGenerator
     {
-        public static string MesicSlovne(int mesic)
-        {
-            switch (mesic)
-            {
-                case 1:
-                    return "Leden";
-                case 2:
-                    return "Únor";
-                case 3:
-                    return "Březen";
-                case 4:
-                    return "Duben";
-                case 5:
-                    return "Květen";
-                case 6:
-                    return "Červen";
-                case 7:
-                    return "Červenec";
-                case 8:
-                    return "Srpen";
-                case 9:
-                    return "Září";
-                case 10:
-                    return "Říjen";
-                case 11:
-                    return "Listopad";
-                case 12:
-                    return "Prosinec";
-                default:
-                    return "";
-            }
-        } 
+       
         public static void HorizontalniZarovnani(Excel._Worksheet ws, string from, string to, string type)
         {
             switch (type)
@@ -130,7 +99,7 @@ namespace Vykazy.Model
             HorizontalniZarovnani(worksheet, "F7", "F7", "center");
             HorizontalniZarovnani(worksheet, "B1", "F1", "center");
 
-            worksheet.Cells[4, "E"] = MesicSlovne(Mesic) + " " + Rok;
+            worksheet.Cells[4, "E"] = Convertors.MesicSlovne(Mesic) + " " + Rok;
             worksheet.Cells[5, "E"] = Jmeno;
 
             //Ohraničení
@@ -140,7 +109,7 @@ namespace Vykazy.Model
             int PocetDni = DateTime.DaysInMonth(Rok, Mesic);
             for (int i = 9; i < 9 + PocetDni; i++)
             {
-                worksheet.Cells[i, "B"] = (i - 9).ToString() + ".";
+                worksheet.Cells[i, "B"] = (i - 8).ToString() + ".";
                 HorizontalniZarovnani(worksheet, "B" + i.ToString(), "B" + i.ToString(), "center");
                 ((Excel.Range)worksheet.Cells[i, "C"]).NumberFormat = "@";
                 ((Excel.Range)worksheet.Cells[i, "E"]).NumberFormat = "#";
@@ -159,9 +128,17 @@ namespace Vykazy.Model
             //Vyhledat a označit víkendy
             for(int i = 1; i < PocetDni; i++)
             {
-                if(DateTime.Parse(String.Format("{0}-{1:D2}-{2:D2} 00:00", Rok, Mesic, i)).DayOfWeek.ToString() == "Saturday" || DateTime.Parse(String.Format("{0}-{1:D2}-{2:D2} 00:00", Rok, Mesic, i)).DayOfWeek.ToString() == "Sunday")
+                if(Convertors.Vikend(i, Mesic, Rok))
                 {
-                    worksheet.get_Range("B" + (i + 9).ToString(), "F" + (i + 9).ToString()).Interior.Color = Excel.XlRgbColor.rgbGreenYellow;
+                    worksheet.get_Range("B" + (i + 8).ToString(), "F" + (i + 8).ToString()).Interior.Color = Excel.XlRgbColor.rgbGreenYellow;
+                }
+            }
+            //Vyhledat a označit svátky
+            for (int i = 1; i < PocetDni; i++)
+            {
+                if (Convertors.Svatek(i, Mesic))
+                {
+                    worksheet.get_Range("B" + (i + 8).ToString(), "F" + (i + 8).ToString()).Interior.Color = Excel.XlRgbColor.rgbLightPink;
                 }
             }
 
