@@ -78,7 +78,7 @@ namespace Vykazy.Model
         }
         public static void Ohraniceni(Excel._Worksheet ws, string from, string to, int weight)
         {
-            ws.get_Range(from, to).BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+            ws.get_Range(from, to).BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
             ws.get_Range(from, to).Borders.Weight = weight;
             ws.get_Range(from, to).Borders.Color = Excel.XlRgbColor.rgbBlack;
         }
@@ -108,6 +108,7 @@ namespace Vykazy.Model
             worksheet.Range[worksheet.Cells[7, "D"], worksheet.Cells[8, "D"]].Merge();
             worksheet.Range[worksheet.Cells[7, "E"], worksheet.Cells[8, "E"]].Merge();
             worksheet.Range[worksheet.Cells[7, "F"], worksheet.Cells[8, "F"]].Merge();
+            worksheet.get_Range("B1", "F1").Merge();
 
             worksheet.Cells[7, "B"] = "Datum";
             worksheet.Cells[7, "C"] = "PPP" + (char)10 + "(od-do)";
@@ -127,9 +128,13 @@ namespace Vykazy.Model
             HorizontalniZarovnani(worksheet, "D7", "D7", "center");
             HorizontalniZarovnani(worksheet, "E7", "E7", "center");
             HorizontalniZarovnani(worksheet, "F7", "F7", "center");
+            HorizontalniZarovnani(worksheet, "B1", "F1", "center");
 
             worksheet.Cells[4, "E"] = MesicSlovne(Mesic) + " " + Rok;
             worksheet.Cells[5, "E"] = Jmeno;
+
+            //Ohraničení
+            Ohraniceni(worksheet, "B7", "F8", 2);
 
             //Vygenerovani dnu
             int PocetDni = DateTime.DaysInMonth(Rok, Mesic);
@@ -137,13 +142,30 @@ namespace Vykazy.Model
             {
                 worksheet.Cells[i, "B"] = (i - 9).ToString() + ".";
                 HorizontalniZarovnani(worksheet, "B" + i.ToString(), "B" + i.ToString(), "center");
-                worksheet.Cells[i, "D"] = ""; //Vzorec pro vypocet zleva
-                ((Excel.Range) worksheet.Cells[i, "F"]).FormulaLocal = String.Format("=SUMA(D{0}:E{0})", i);
+                ((Excel.Range)worksheet.Cells[i, "C"]).NumberFormat = "@";
+                ((Excel.Range)worksheet.Cells[i, "E"]).NumberFormat = "#";
+                ((Excel.Range)worksheet.Cells[i, "F"]).FormulaLocal = String.Format("=SUMA(D{0}:E{0})", i);
                 Ohraniceni(worksheet, "B" + i.ToString(), "F" + i.ToString(), 2);
-                
-
 
             }
+
+            worksheet.Cells[9 + PocetDni, "B"] = "Celkem";
+            ((Excel.Range)worksheet.Cells[9 + PocetDni, "D"]).FormulaLocal = String.Format("=SUMA(D9:D{0})", PocetDni + 9);
+            ((Excel.Range)worksheet.Cells[9 + PocetDni, "F"]).FormulaLocal = String.Format("=SUMA(F9:F{0})", PocetDni + 9);
+            worksheet.get_Range("B" + (PocetDni + 9).ToString(), "C" + (PocetDni + 9).ToString()).Merge();
+            Ohraniceni(worksheet, "B" + (PocetDni + 9).ToString(), "F" + (PocetDni + 9).ToString(), 2);
+            Ohraniceni(worksheet, "B7", "F8", 3);
+
+            //Vyhledat a označit víkendy
+            for(int i = 1; i < PocetDni; i++)
+            {
+                if(DateTime.Parse(String.Format("{0}-{1:D2}-{2:D2} 00:00", Rok, Mesic, i)).DayOfWeek.ToString() == "Saturday" || DateTime.Parse(String.Format("{0}-{1:D2}-{2:D2} 00:00", Rok, Mesic, i)).DayOfWeek.ToString() == "Sunday")
+                {
+                    worksheet.get_Range("B" + (i + 9).ToString(), "F" + (i + 9).ToString()).Interior.Color = Excel.XlRgbColor.rgbGreenYellow;
+                }
+            }
+
+
 
             //(Excel.Range)(worksheet.Range[worksheet.Cells[7, "B"], worksheet.Cells[8, "B"]].Cells).MergeCells();
             // ((Excel.Range)worksheet.Cells["B7", "B8"]).MergeCells(); 
