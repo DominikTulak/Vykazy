@@ -10,6 +10,38 @@ namespace Vykazy.Model
 {
     public static class ExcelGenerator
     {
+        public static string MesicSlovne(int mesic)
+        {
+            switch (mesic)
+            {
+                case 1:
+                    return "Leden";
+                case 2:
+                    return "Únor";
+                case 3:
+                    return "Březen";
+                case 4:
+                    return "Duben";
+                case 5:
+                    return "Květen";
+                case 6:
+                    return "Červen";
+                case 7:
+                    return "Červenec";
+                case 8:
+                    return "Srpen";
+                case 9:
+                    return "Září";
+                case 10:
+                    return "Říjen";
+                case 11:
+                    return "Listopad";
+                case 12:
+                    return "Prosinec";
+                default:
+                    return "";
+            }
+        } 
         public static void HorizontalniZarovnani(Excel._Worksheet ws, string from, string to, string type)
         {
             switch (type)
@@ -44,16 +76,20 @@ namespace Vykazy.Model
                     break;
             }
         }
-        public static void VytvorTabulku(Excel.Application excelApp)
+        public static void Ohraniceni(Excel._Worksheet ws, string from, string to, int weight)
         {
-            //Excel._Worksheet workSheet = excelApp.Sheets.Add();
+            ws.get_Range(from, to).BorderAround(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+            ws.get_Range(from, to).Borders.Weight = weight;
+            ws.get_Range(from, to).Borders.Color = Excel.XlRgbColor.rgbBlack;
+        }
+        public static void VytvorTabulku(int Mesic, int Rok, string Jmeno, Excel.Application excelApp)
+        {
+            //Vytvoření tabulky
             Excel._Worksheet worksheet = (Excel._Worksheet)excelApp.Sheets.Add();
             worksheet.Name = "Výkaz";
 
 
-
-            //worksheet.Columns("A").ColumnWidth = 4;
-
+            //Nastaveni sirky sloupcu
             ((Excel.Range)worksheet.Columns[1]).ColumnWidth = 4;
             ((Excel.Range)worksheet.Columns[2]).ColumnWidth = 7;
             ((Excel.Range)worksheet.Columns[3]).ColumnWidth = 22.5;
@@ -66,8 +102,7 @@ namespace Vykazy.Model
             worksheet.Cells[4, "B"] = "Za období:";
             worksheet.Cells[5, "B"] = "Jméno a příjmení: ";
 
-            //worksheet.Cells[4, "E"] = "OBDOBÍ";
-
+            //Spojeni policek
             worksheet.Range[worksheet.Cells[7, "B"], worksheet.Cells[8, "B"]].Merge();
             worksheet.Range[worksheet.Cells[7, "C"], worksheet.Cells[8, "C"]].Merge();
             worksheet.Range[worksheet.Cells[7, "D"], worksheet.Cells[8, "D"]].Merge();
@@ -79,9 +114,8 @@ namespace Vykazy.Model
             worksheet.Cells[7, "D"] = "PPP" + (char)10 + "(hodiny)";
             worksheet.Cells[7, "E"] = "NPČ" + (char)10 + "(hodiny)";
             worksheet.Cells[7, "F"] = "PPP+NPČ" + (char)10 + "celkem";
-            //worksheet.Range.mer
-
-
+            
+            //Zarovnani policek
             VertikalniZarovnani(worksheet, "B7", "B7", "center");
             VertikalniZarovnani(worksheet, "C7", "C7", "center");
             VertikalniZarovnani(worksheet, "D7", "D7", "center");
@@ -94,8 +128,22 @@ namespace Vykazy.Model
             HorizontalniZarovnani(worksheet, "E7", "E7", "center");
             HorizontalniZarovnani(worksheet, "F7", "F7", "center");
 
+            worksheet.Cells[4, "E"] = MesicSlovne(Mesic) + " " + Rok;
+            worksheet.Cells[5, "E"] = Jmeno;
+
+            //Vygenerovani dnu
+            int PocetDni = DateTime.DaysInMonth(Rok, Mesic);
+            for (int i = 9; i < 9 + PocetDni; i++)
+            {
+                worksheet.Cells[i, "B"] = (i - 9).ToString() + ".";
+                HorizontalniZarovnani(worksheet, "B" + i.ToString(), "B" + i.ToString(), "center");
+                worksheet.Cells[i, "D"] = ""; //Vzorec pro vypocet zleva
+                ((Excel.Range) worksheet.Cells[i, "F"]).FormulaLocal = String.Format("=SUMA(D{0}:E{0})", i);
+                Ohraniceni(worksheet, "B" + i.ToString(), "F" + i.ToString(), 2);
+                
 
 
+            }
 
             //(Excel.Range)(worksheet.Range[worksheet.Cells[7, "B"], worksheet.Cells[8, "B"]].Cells).MergeCells();
             // ((Excel.Range)worksheet.Cells["B7", "B8"]).MergeCells(); 

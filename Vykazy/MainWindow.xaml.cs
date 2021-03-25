@@ -12,8 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Excel = Microsoft.Office.Interop.Excel;
-using System.IO;
 
 namespace Vykazy
 {
@@ -22,23 +20,16 @@ namespace Vykazy
     /// </summary>
     public partial class MainWindow : Window
     {
-        Controller.MainWindowController controller = new Controller.MainWindowController();
+        Controller.MainWindowController Controller;
         public MainWindow()
         {
             InitializeComponent();
+            Controller = new Controller.MainWindowController();
         }
 
         private void BTNGenerate_Click(object sender, RoutedEventArgs e)
-        {
-            
-            controller.BTNGenerateClick();
-            var excelApp = new Excel.Application();
-            excelApp.Visible = true;
-            var eapp = excelApp.Workbooks.Add();
-            VytvorTabulku(excelApp);
-            //VytvorTabulku("Švédská", excelApp);
-            //eapp.Worksheets["List1"].Delete();
-
+        {        
+            Controller.BTNGenerateClick();
         }
         
     }

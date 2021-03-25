@@ -14,7 +14,7 @@ namespace Vykazy.Controller
             var excelApp = new Excel.Application();
             excelApp.Visible = true;
             var eapp = excelApp.Workbooks.Add();
-            Model.ExcelGenerator.VytvorTabulku(excelApp);
+            Model.ExcelGenerator.VytvorTabulku(3, 2021, "Jana Došková", excelApp);
 
         }
     }
