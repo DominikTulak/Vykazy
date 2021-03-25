@@ -14,7 +14,7 @@ namespace Vykazy.Controller
             var excelApp = new Excel.Application();
             excelApp.Visible = true;
             var eapp = excelApp.Workbooks.Add();
-            Model.ExcelGenerator.VytvorTabulku(mesic, rok, "Jana Došková", excelApp);
+            Model.ExcelGenerator.VytvorTabulku(mesic, rok, Model.Settings.Jmeno, Model.Settings.Text1, Model.Settings.Text2, excelApp);
 
         }
     }

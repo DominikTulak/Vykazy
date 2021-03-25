@@ -51,7 +51,7 @@ namespace Vykazy.Model
             ws.get_Range(from, to).Borders.Weight = weight;
             ws.get_Range(from, to).Borders.Color = Excel.XlRgbColor.rgbBlack;
         }
-        public static void VytvorTabulku(int Mesic, int Rok, string Jmeno, Excel.Application excelApp)
+        public static void VytvorTabulku(int Mesic, int Rok, string Jmeno, string Text1, string Text2, Excel.Application excelApp)
         {
             //Vytvoření tabulky
             Excel._Worksheet worksheet = (Excel._Worksheet)excelApp.Sheets.Add();
@@ -66,8 +66,8 @@ namespace Vykazy.Model
             ((Excel.Range)worksheet.Columns[5]).ColumnWidth = 20;
             ((Excel.Range)worksheet.Columns[6]).ColumnWidth = 8.5;
 
-            worksheet.Cells[1, "B"] = "Dětský donmov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace";
-            worksheet.Cells[3, "B"] = "Výkaz práce - služby:";
+            worksheet.Cells[1, "B"] = Text1;
+            worksheet.Cells[3, "B"] = Text2;
             worksheet.Cells[4, "B"] = "Za období:";
             worksheet.Cells[5, "B"] = "Jméno a příjmení: ";
 

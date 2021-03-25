@@ -26,11 +26,13 @@ namespace Vykazy
             InitializeComponent();
             Controller = new Controller.MainWindowController();
             Model.Convertors.VygenerovatMenu(cb_mesic, cb_rok);
+            Model.Settings.Nacist();
         }
 
         private void btn_OK_Click(object sender, RoutedEventArgs e)
         {
-            Controller.BTNGenerateClick();
+            //MessageBox.Show(cb_mesic.SelectedIndex+1 + "   " + int.Parse(cb_rok.SelectedItem.ToString()));
+            Controller.BTNGenerateClick(cb_mesic.SelectedIndex + 1, int.Parse(cb_rok.SelectedItem.ToString()));
         }
         private void btn_Nastaveni_Click(object sender, RoutedEventArgs e)
         {

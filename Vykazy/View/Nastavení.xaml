@@ -1,0 +1,19 @@
+﻿<Window x:Class="Vykazy.View.Nastavení"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vykazy.View"
+        mc:Ignorable="d"
+        Title="Nastavení" Height="367.733" Width="461.983">
+    <Grid>
+        <Label Content="Nastavení výkazů" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Width="192"/>
+        <Label Content="Jméno&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,60,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Text1:&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="10,92,0,0" VerticalAlignment="Top" Height="27"/>
+        <Label Content="Text2:&#xD;&#xA;&#xA;" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Height="27"/>
+        <TextBox x:Name="" HorizontalAlignment="Left" Height="23" Margin="60,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267"/>
+        <TextBox HorizontalAlignment="Left" Height="65" Margin="60,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="267" Text="Dětský donmov, Jablonec nad Nisou, Pasecká 20, příspěvková organizace"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="60,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="267" Text="Výkaz práce - služby:"/>
+
+    </Grid>
+</Window>
